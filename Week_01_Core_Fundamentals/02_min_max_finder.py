@@ -12,12 +12,25 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def find_min_max(values):
+    maxNum = values[0]
+    minNum = values[0]
+    if values == [""]:
+        return 0
+    else:
+        for num in values:
+            if num > maxNum:
+                maxNum = num
+            if num < minNum:
+                minNum = num
+    return minNum, maxNum
 
+def main():
+    values = []
+    numList = input("Enter a list of numbers: ")
+    values += numList.split(", ")
+    print(numList)
+    print(find_min_max(values))
 
 if __name__ == "__main__":
     main()
