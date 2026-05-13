@@ -13,12 +13,25 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
+def linear_search(values, target):
+    index = 0
+    found = False
+    position = -1
+
+    while index < len(values) and not found:
+        if values[index] == target:
+            found = True
+            position = index
+        else:
+            index = index + 1
+    return position
+
 def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
-
-
+    testArray = [24, 17, 85, 63, 91, 12]
+    searchTarget = 63
+    
+    result = linear_search(testArray, searchTarget)
+    print(result)
+    
 if __name__ == "__main__":
     main()
