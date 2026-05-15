@@ -12,12 +12,20 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def insertion_sort(inputList): 
+    for element_index in range(1, len(inputList)): 
+        currentValue = inputList[element_index] 
+        position = element_index - 1 
+        while position >= 0 and currentValue < inputList[position]: 
+            inputList[position + 1] = inputList[position] 
+            position -= 1 
+        inputList[position + 1] = currentValue 
+    return inputList
 
+def main():
+    myList = [1, 5, 7, 9, 4, 2, 3, 6, 10, 8] 
+    sortedList = insertion_sort(myList) 
+    print(sortedList) 
 
 if __name__ == "__main__":
     main()
