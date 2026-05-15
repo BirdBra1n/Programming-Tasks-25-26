@@ -12,12 +12,19 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def bubble(list):
+    length = len(list)
+    for i in range(length - 1):
+        for j in range(0, length - 1):
+            if list[j] > list[j+i]:
+                temp = list[j]
+                list[j] = list[j+1]
+                list[j+1] = temp
+    return list
 
+def main():
+    list = [10, 8, 9, 6, 7, 5, 6, 3, 2, 1]
+    print(bubble(list))
 
 if __name__ == "__main__":
     main()
