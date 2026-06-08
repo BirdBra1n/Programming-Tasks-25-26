@@ -11,12 +11,69 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def create_shopping_list():
+    shopping_list = []
+    print("Enter items to add to your shopping list (Type 'DONE' when finished):")
+    
+    while True:
+        item = input("> ").strip()
+        if item.upper() == "DONE":
+            print("\n")
+            break
+        
+        if item != "":
+            shopping_list.append(item)
+        else:
+            print("Item cannot be blank.")
+            
+    return shopping_list
 
+
+def display_list(shopping_list):
+    if not shopping_list:
+        print("[Your list is currently empty]")
+        return
+        
+    for index, item in enumerate(shopping_list, start=1):
+        print(f"{index}. {item}")
+    print("-" * 28)
+    print("\n")
+
+
+def edit_shopping_list(shopping_list):
+    if not shopping_list:
+        return shopping_list
+
+    display_list(shopping_list)
+    edit_choice = input("Would you like to edit any item? (y/n): ").strip().lower()
+    
+    if edit_choice in ["yes", "y"]:
+        try:
+            item_num = int(input("Enter the number of the item you want to change: "))
+            python_index = item_num - 1
+            
+            if 0 <= python_index < len(shopping_list):
+                old_item = shopping_list[python_index]
+                new_item = input(f"Enter new name for '{old_item}': ").strip()
+                
+                if new_item != "":
+                    shopping_list[python_index] = new_item
+                    print(f"Updated: from '{old_item}' to '{new_item}'.")
+                else:
+                    print("Invalid input, New name cannot be blank.")
+            else:
+                print("Invalid item number.")
+                
+        except ValueError:
+            print("Invalid input, enter a valid numerical item number.")
+            
+    return shopping_list
+
+def main():
+    my_list = create_shopping_list()
+    display_list(my_list)
+    my_list = edit_shopping_list(my_list)
+    display_list(my_list)
 
 if __name__ == "__main__":
     main()
