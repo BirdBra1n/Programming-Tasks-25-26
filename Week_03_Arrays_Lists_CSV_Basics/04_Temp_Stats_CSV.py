@@ -28,8 +28,6 @@ def readTemperatureData(filePath=fileName):
 
     if not os.path.exists(filePath):
         print(f"Error: File '{filePath}' not found.")
-        print("Please download 'meantemp_daily_totals.txt' from:")
-        print("https://www.metoffice.gov.uk/hadobs/hadcet/data/download.html")
         return dateList, tempList
 
     dataFile = open(filePath, mode="r", encoding="utf-8")
