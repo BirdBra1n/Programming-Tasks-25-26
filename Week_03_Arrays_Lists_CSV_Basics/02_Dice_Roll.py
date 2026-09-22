@@ -15,12 +15,59 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+import random
+import matplotlib.pyplot as plt
 
+
+def simulateRolls(numberOfRolls):
+    sideCounts = [0, 0, 0, 0, 0, 0, 0]
+    totalSum = 0
+
+    print(f"\n--- Rolling die {numberOfRolls} times ---")
+    for rollIndex in range(numberOfRolls):
+        rollValue = random.randint(1, 6)
+        print(f"Roll {rollIndex + 1}: {rollValue}")
+        
+        sideCounts[rollValue] = sideCounts[rollValue] + 1
+        totalSum = totalSum + rollValue
+
+    return sideCounts, totalSum
+
+
+def displayStatistics(sideCounts, totalSum, numberOfRolls):
+    print("\n--- Dice Stats ---")
+    
+    for side in range(1, 7):
+        sideTotalSum = side * sideCounts[side]
+        print(f"Side {side}: count = {sideCounts[side]}, total sum = {sideTotalSum}")
+
+    averageRoll = totalSum / numberOfRolls
+    print(f"\nTotal Sum of all rolls: {totalSum}")
+    print(f"Average dice roll: {averageRoll:.2f}")
+
+
+def plotBarGraph(sideCounts):
+    sides = [1, 2, 3, 4, 5, 6]
+    counts = sideCounts[1:]
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(sides, counts, color="skyblue", edgecolor="black")
+    plt.title("Dice Roll Frequency Distribution")
+    plt.xlabel("Dice Side")
+    plt.ylabel("Frequency (Count)")
+    plt.xticks(sides)
+    plt.grid(axis="y", linestyle="--", alpha=0.7)
+    
+    plt.show()
+
+def main():
+    numberOfRolls = int(input("Enter the number of times to roll the die: "))
+    sideCounts, totalSum = simulateRolls(numberOfRolls)
+    displayStatistics(sideCounts, totalSum, numberOfRolls)
+    
+    plotGraphChoice = input("\nWould you like to plot a bar graph? (y/n): ").lower()
+    if plotGraphChoice == "y":
+        plotBarGraph(sideCounts)
 
 if __name__ == "__main__":
     main()
