@@ -12,9 +12,6 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-import random
-import time
-
 def bubbleSort(inputList):
     arr = list(inputList)
     swaps = 0
@@ -34,33 +31,13 @@ def bubbleSort(inputList):
             
     return arr, swaps
 
-def generateRandomList(size):
-    return [random.randint(1, 100) for _ in range(size)]
-
-def benchmark(sizes):
-    print(f"\n{'Size':<10} | {'Swaps':<15} | {'Time (s)':<12}")
-    print("-" * 42)
-    
-    for size in sizes:
-        testData = generateRandomList(size)
-        
-        startTime = time.perf_counter()
-        _, totalSwaps = bubbleSort(testData)
-        endTime = time.perf_counter()
-        
-        elapsedTime = endTime - startTime
-        print(f"{size:<10} | {totalSwaps:<15} | {elapsedTime:<12.6f}")
-
 def main():
     myList = [10, 8, 9, 6, 7, 5, 6, 3, 2, 1]
-    sortedList, swaps = bubbleSort(myList)
+    sortedList, totalSwaps = bubbleSort(myList)
     
     print("Original List:", myList)
     print("Sorted List:  ", sortedList)
-    print("Swaps:        ", swaps)
-    
-    testSizes = [10, 100, 500, 1000]
-    benchmark(testSizes)
+    print("Swaps:        ", totalSwaps)
 
 if __name__ == "__main__":
     main()
