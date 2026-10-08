@@ -39,5 +39,19 @@ def main():
     print("Sorted List:  ", sortedList)
     print("Swaps:        ", totalSwaps)
 
+def bubble(list):
+    length = len(list)
+    for i in range(length - 1):
+        for j in range(0, length - 1):
+            if list[j] > list[j+i]:
+                temp = list[j]
+                list[j] = list[j+1]
+                list[j+1] = temp
+    return list
+
+def main():
+    list = [10, 8, 9, 6, 7, 5, 6, 3, 2, 1]
+    print(bubble(list))
+
 if __name__ == "__main__":
     main()
