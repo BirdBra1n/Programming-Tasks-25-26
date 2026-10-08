@@ -13,55 +13,6 @@ TODO:
 """
 
 import random
-import time
-
-def insertionSort(inputList):
-    arr = list(inputList)
-    comparisons = 0
-    
-    for elementIndex in range(1, len(arr)):
-        currentValue = arr[elementIndex]
-        position = elementIndex - 1
-        
-        while position >= 0:
-            comparisons += 1
-            if arr[position] > currentValue:
-                arr[position + 1] = arr[position]
-                position -= 1
-            else:
-                break
-                
-        arr[position + 1] = currentValue
-        
-    return arr, comparisons
-
-def generateRandomList(size):
-    return [random.randint(1, 100) for _ in range(size)]
-
-def benchmark(sizes):
-    print(f"\n{'Size':<10} | {'Comparisons':<15} | {'Time (s)':<12}")
-    print("-" * 42)
-    
-    for size in sizes:
-        testData = generateRandomList(size)
-        
-        startTime = time.perf_counter()
-        _, totalComps = insertionSort(testData)
-        endTime = time.perf_counter()
-        
-        elapsedTime = endTime - startTime
-        print(f"{size:<10} | {totalComps:<15} | {elapsedTime:<12.6f}")
-
-def main():
-    myList = [1, 5, 7, 9, 4, 2, 3, 6, 10, 8]
-    sortedList, comps = insertionSort(myList)
-    
-    print("Original List:", myList)
-    print("Sorted List:  ", sortedList)
-    print("Comparisons:  ", comps)
-    
-    testSizes = [10, 100, 500, 1000]
-    benchmark(testSizes)
 
 def insertion_sort(inputList): 
     count = 0
@@ -76,11 +27,12 @@ def insertion_sort(inputList):
     return inputList, count
 
 def main():
-    myList = [1, 5, 7, 9, 4, 2, 3, 6, 10, 8] 
-    sortedList = insertion_sort(myList) 
-    print(sortedList) 
-    print(count)
+    myList = [random.randint(1, 100) for _ in range(10)]
+    print(f"Original Unsorted List: {myList}")
+    
+    sortedList, total_comparisons = insertion_sort(myList) 
+    print(f"Sorted List:            {sortedList}") 
+    print(f"Number of Comparisons:  {total_comparisons}")
 
 if __name__ == "__main__":
-    main()
     main()
