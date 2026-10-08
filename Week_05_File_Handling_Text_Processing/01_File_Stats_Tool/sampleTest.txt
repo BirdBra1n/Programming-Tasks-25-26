@@ -1,0 +1,4 @@
+Hello world!
+Welcome to the file stats tool.
+Hello again, world. This tool counts words, lines, and characters.
+The most frequent word here should be world.
