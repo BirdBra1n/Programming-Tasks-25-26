@@ -11,12 +11,21 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def print_times_table(number):
+    for i in range(1, 13):
+        print(f"{number} x {i} = {number * i}")
 
+def get_valid_integer():
+    while True:
+        user_input = input("Enter an integer to see its times table: ")
+        try:
+            return int(user_input)
+        except ValueError:
+            print("Invalid input, enter a whole number.")
+
+def main():
+    target_number = get_valid_integer()
+    print_times_table(target_number)
 
 if __name__ == "__main__":
     main()
